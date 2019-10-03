@@ -41,7 +41,22 @@
 
     - name: updating metrics-server-deployment.yaml
       copy:
-        src: /home/kube/metrics-server-deployment.yaml
+        src: /home/kube/kubernetes/metrics-server-deployment.yaml
         dest: /home/kube/metrics-server/deploy/1.8+/
         remote_src: yes
         owner: kube
+
+    - name: Deploying Metrics-Server for HPA
+      become: yes
+      become_user: kube
+      shell: kubectl apply -f metrics-server/deploy/1.8+/aggregated-metrics-reader.yaml;
+             kubectl apply -f metrics-server/deploy/1.8+/auth-reader.yaml;
+             kubectl apply -f metrics-server/deploy/1.8+/auth-delegator.yaml;
+             kubectl apply -f metrics-server/deploy/1.8+/metrics-apiservice.yaml;
+             kubectl apply -f metrics-server/deploy/1.8+/resource-reader.yaml;
+             kubectl apply -f metrics-server/deploy/1.8+/metrics-server-deployment.yaml;
+             kubectl apply -f metrics-server/deploy/1.8+/metrics-server-service.yaml
+      args:
+        chdir: $HOME
+        creates: my_app.txt
+
