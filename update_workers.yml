@@ -1,0 +1,10 @@
+- hosts: workers
+  gather_facts: false
+  tasks:
+
+  - name: Updating website from GitHub
+    shell: cd /home/kube/tricksvibe;
+           git pull >> latest_git_pull.txt
+    args:
+      chdir: $HOME
+      creates: latest_git_pull.txt
