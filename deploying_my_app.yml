@@ -4,14 +4,20 @@
   gather_facts: false
   tasks:
 
-    - name: Updating External IP in My_App's Service
+    - name: Get Master Node's IP
+      shell: ifconfig eth0 | grep 'inet ' | awk {'print $2'}
+      register: get_ip
+
+    - name: Set Master Node's IP
+      set_fact:
+        set_ip: "{{ get_ip.stdout_lines[0] }}"
+
+    - name: Changing External IP
       replace:
-	dest: /home/kube/kubernetes/my_app/nginx_php-fpm_multicontainer_service.yaml
-	regexp: '192.168.1.7'
-	replace: "{{ hostvars[item].ansible_host }}"
-	state: present
-      when: hostvars[item].ansible_host is defined
-      with_items: "{{ groups.masters }}"
+        path: /home/kube/kubernetes/my_app/nginx_php-fpm_multicontainer_service.yaml
+        regexp: '(\s+)192\.168\.1\.7(\s+.*)?$'
+        replace: " {{ hostvars['master'].set_ip }}"
+        backup: yes
 
     - name: deploying HPA my_app
       shell: kubectl create -f /home/kube/kubernetes/my_app/

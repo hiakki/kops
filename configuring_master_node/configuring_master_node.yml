@@ -1,4 +1,4 @@
-- hosts: master
+- hosts: master{{n}}
   become: yes
   tasks:
 

@@ -1,0 +1,18 @@
+- hosts: "{{n}}"
+  become: yes
+  tasks:
+
+    - name: Add IP address of all hosts to all hosts
+      lineinfile:
+        dest: /etc/hosts
+        regexp: '.*{{ item }}$'
+        line: "{{ hostvars[item].ansible_host }} {{item}}"
+        state: present
+      when: hostvars[item].ansible_host is defined
+      with_items: "{{ groups.all }}"
+
+    - name: git pull website data
+      become_user: kube
+      shell: git clone https://github.com/hyeAkki/tricksvibe.git
+      args:
+        chdir: $HOME

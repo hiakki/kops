@@ -1,10 +1,19 @@
-- hosts: workers
+- hosts: "{{n}}"
   gather_facts: false
+  become: yes
+  become_user: kube
   tasks:
 
   - name: Updating website from GitHub
-    shell: cd /home/kube/tricksvibe;
+    shell: cd tricksvibe;
            git pull >> latest_git_pull.txt
     args:
       chdir: $HOME
       creates: latest_git_pull.txt
+
+  - name: Editing lbcheck.php
+    replace:
+      path: /home/kube/tricksvibe/wordpress/lbcheck.php
+      regexp: 'Worker'
+      replace: "{{ n }}"
+      backup: yes

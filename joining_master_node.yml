@@ -21,9 +21,3 @@
       args:
         chdir: $HOME
         creates: node_joined.txt
-
-    - name: git pull website data
-      shell: git clone https://github.com/hyeAkki/tricksvibe.git /home/kube/tricksvibe/ >> git_pull.txt
-      args:
-        chdir: $HOME
-        creates: git_pull.txt
