@@ -14,10 +14,16 @@
 
     - name: Changing External IP
       replace:
-        path: /home/kube/kubernetes/*/nginx_php-fpm_multicontainer_service.yaml
-        regexp: '(\s+)192\.168\.1\.7(\s+.*)?$'
+        path: "{{ item }}"
+        regexp: 'masterIP'
         replace: " {{ hostvars['master'].set_ip }}"
         backup: yes
+      with_items: 
+        - /home/kube/kubernetes/blue/nginx_php-fpm_multicontainer_service.yaml
+        - /home/kube/kubernetes/green/nginx_php-fpm_multicontainer_service.yaml
 
     - name: deploying HPA my_app
-      shell: kubectl create -f /home/kube/kubernetes/*/
+      shell: kubectl create -f "{{ item }}"
+      with_items: 
+        - /home/kube/kubernetes/blue/
+        - /home/kube/kubernetes/green/

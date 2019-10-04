@@ -1,0 +1,11 @@
+- hosts: master
+  become: yes
+  become_user: kube
+  gather_facts: false
+  tasks:
+
+    - name: deploying HPA my_app
+      shell: kubectl delete deploy,svc,hpa "{{ item }}"
+      with_items: 
+        - blue
+        - green
