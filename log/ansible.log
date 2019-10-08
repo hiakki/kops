@@ -1,0 +1,149 @@
+2019-10-08 05:11:23,762 p=20260 u=root |  PLAY [kops] *****************************************************************************
+2019-10-08 05:11:23,771 p=20260 u=root |  TASK [Changing Hostname to kops] ********************************************************
+2019-10-08 05:11:25,279 p=20260 u=root |  changed: [kops]
+2019-10-08 05:11:25,286 p=20260 u=root |  TASK [Reboot immediately if there was a change in reboot_req.] **************************
+2019-10-08 05:11:25,910 p=20260 u=root |  changed: [kops]
+2019-10-08 05:11:25,918 p=20260 u=root |  TASK [Wait for the reboot to complete if there was a change in reboot_req.] *************
+2019-10-08 05:12:09,439 p=20260 u=root |  ok: [kops]
+2019-10-08 05:12:09,446 p=20260 u=root |  TASK [Check if machine is On] ***********************************************************
+2019-10-08 05:12:09,950 p=20260 u=root |  changed: [kops]
+2019-10-08 05:12:09,957 p=20260 u=root |  TASK [op join command] ******************************************************************
+2019-10-08 05:12:09,977 p=20260 u=root |  ok: [kops]
+2019-10-08 05:12:09,984 p=20260 u=root |  TASK [Print Hostname of host machine] ***************************************************
+2019-10-08 05:12:10,004 p=20260 u=root |  ok: [kops] => {
+    "msg": "kops"
+}
+2019-10-08 05:12:10,007 p=20260 u=root |  PLAY RECAP ******************************************************************************
+2019-10-08 05:12:10,008 p=20260 u=root |  kops                       : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2019-10-08 05:12:36,157 p=20355 u=root |  PLAY [kops] *****************************************************************************
+2019-10-08 05:12:36,166 p=20355 u=root |  TASK [install remote apt deps] **********************************************************
+2019-10-08 05:12:36,183 p=20355 u=root |  [DEPRECATION WARNING]: Invoking "apt" only once while using a loop via squash_actions is
+ deprecated. Instead of using a loop to supply multiple items and specifying `name: "{{ 
+item }}"`, please use `name: ['apt-transport-https', 'ca-certificates', 'gnupg2', 
+'software-properties-common']` and remove the loop. This feature will be removed in 
+version 2.11. Deprecation warnings can be disabled by setting deprecation_warnings=False
+ in ansible.cfg.
+2019-10-08 05:12:41,338 p=20355 u=root |  changed: [kops] => (item=[u'apt-transport-https', u'ca-certificates', u'gnupg2', u'software-properties-common'])
+2019-10-08 05:12:41,342 p=20355 u=root |   [WARNING]: Could not find aptitude. Using apt-get instead
+
+2019-10-08 05:12:41,347 p=20355 u=root |  TASK [add Docker apt-key] ***************************************************************
+2019-10-08 05:12:42,655 p=20355 u=root |  changed: [kops]
+2019-10-08 05:12:42,662 p=20355 u=root |  TASK [add Docker's APT repository] ******************************************************
+2019-10-08 05:12:47,901 p=20355 u=root |  changed: [kops]
+2019-10-08 05:12:47,908 p=20355 u=root |  TASK [install Docker] *******************************************************************
+2019-10-08 05:13:10,697 p=20355 u=root |  changed: [kops]
+2019-10-08 05:13:10,705 p=20355 u=root |  TASK [add Kubernetes apt-key] ***********************************************************
+2019-10-08 05:13:12,244 p=20355 u=root |  changed: [kops]
+2019-10-08 05:13:12,252 p=20355 u=root |  TASK [add Kubernetes' APT repository] ***************************************************
+2019-10-08 05:13:17,805 p=20355 u=root |  changed: [kops]
+2019-10-08 05:13:17,812 p=20355 u=root |  TASK [install kubelet] ******************************************************************
+2019-10-08 05:13:32,307 p=20355 u=root |  changed: [kops]
+2019-10-08 05:13:32,314 p=20355 u=root |  TASK [Get Latest Version of kops] *******************************************************
+2019-10-08 05:13:33,169 p=20355 u=root |   [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you
+need to use command because get_url or uri is insufficient you can add 'warn: false' to
+this command task or set 'command_warnings=False' in ansible.cfg to get rid of this
+message.
+
+2019-10-08 05:13:33,170 p=20355 u=root |  changed: [kops]
+2019-10-08 05:13:33,177 p=20355 u=root |  TASK [set join command] *****************************************************************
+2019-10-08 05:13:33,197 p=20355 u=root |  ok: [kops]
+2019-10-08 05:13:33,204 p=20355 u=root |  TASK [Download Kops binaries] ***********************************************************
+2019-10-08 05:13:50,319 p=20355 u=root |  changed: [kops]
+2019-10-08 05:13:50,326 p=20355 u=root |  TASK [install kubectl] ******************************************************************
+2019-10-08 05:13:56,554 p=20355 u=root |  changed: [kops]
+2019-10-08 05:13:56,558 p=20355 u=root |  PLAY RECAP ******************************************************************************
+2019-10-08 05:13:56,558 p=20355 u=root |  kops                       : ok=11   changed=10   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2019-10-08 05:16:29,332 p=20529 u=root |  PLAY [kops] *****************************************************************************
+2019-10-08 05:16:29,341 p=20529 u=root |  TASK [install remote apt deps] **********************************************************
+2019-10-08 05:16:29,359 p=20529 u=root |  [DEPRECATION WARNING]: Invoking "apt" only once while using a loop via squash_actions is
+ deprecated. Instead of using a loop to supply multiple items and specifying `name: "{{ 
+item }}"`, please use `name: ['apt-transport-https', 'ca-certificates', 'gnupg2', 
+'software-properties-common']` and remove the loop. This feature will be removed in 
+version 2.11. Deprecation warnings can be disabled by setting deprecation_warnings=False
+ in ansible.cfg.
+2019-10-08 05:16:36,897 p=20529 u=root |  changed: [kops] => (item=[u'apt-transport-https', u'ca-certificates', u'gnupg2', u'software-properties-common'])
+2019-10-08 05:16:36,900 p=20529 u=root |   [WARNING]: Could not find aptitude. Using apt-get instead
+
+2019-10-08 05:16:36,906 p=20529 u=root |  TASK [Get Latest Version of kops] *******************************************************
+2019-10-08 05:16:37,717 p=20529 u=root |   [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you
+need to use command because get_url or uri is insufficient you can add 'warn: false' to
+this command task or set 'command_warnings=False' in ansible.cfg to get rid of this
+message.
+
+2019-10-08 05:16:37,717 p=20529 u=root |  changed: [kops]
+2019-10-08 05:16:37,725 p=20529 u=root |  TASK [set join command] *****************************************************************
+2019-10-08 05:16:37,745 p=20529 u=root |  ok: [kops]
+2019-10-08 05:16:37,752 p=20529 u=root |  TASK [Download Kops binaries] ***********************************************************
+2019-10-08 05:16:54,829 p=20529 u=root |  changed: [kops]
+2019-10-08 05:16:54,837 p=20529 u=root |  TASK [install kubectl] ******************************************************************
+2019-10-08 05:16:55,598 p=20529 u=root |  fatal: [kops]: FAILED! => {"changed": false, "msg": "No package matching 'kubectl' is available"}
+2019-10-08 05:16:55,601 p=20529 u=root |  PLAY RECAP ******************************************************************************
+2019-10-08 05:16:55,602 p=20529 u=root |  kops                       : ok=4    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2019-10-08 05:17:56,832 p=20612 u=root |  PLAY [kops] *****************************************************************************
+2019-10-08 05:17:56,841 p=20612 u=root |  TASK [install remote apt deps] **********************************************************
+2019-10-08 05:17:56,859 p=20612 u=root |  [DEPRECATION WARNING]: Invoking "apt" only once while using a loop via squash_actions is
+ deprecated. Instead of using a loop to supply multiple items and specifying `name: "{{ 
+item }}"`, please use `name: ['apt-transport-https', 'ca-certificates', 'gnupg2', 
+'software-properties-common']` and remove the loop. This feature will be removed in 
+version 2.11. Deprecation warnings can be disabled by setting deprecation_warnings=False
+ in ansible.cfg.
+2019-10-08 05:17:58,854 p=20612 u=root |  ok: [kops] => (item=[u'apt-transport-https', u'ca-certificates', u'gnupg2', u'software-properties-common'])
+2019-10-08 05:17:58,857 p=20612 u=root |   [WARNING]: Could not find aptitude. Using apt-get instead
+
+2019-10-08 05:17:58,864 p=20612 u=root |  TASK [Get Latest Version of kops] *******************************************************
+2019-10-08 05:17:59,584 p=20612 u=root |   [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you
+need to use command because get_url or uri is insufficient you can add 'warn: false' to
+this command task or set 'command_warnings=False' in ansible.cfg to get rid of this
+message.
+
+2019-10-08 05:17:59,585 p=20612 u=root |  changed: [kops]
+2019-10-08 05:17:59,592 p=20612 u=root |  TASK [set join command] *****************************************************************
+2019-10-08 05:17:59,613 p=20612 u=root |  ok: [kops]
+2019-10-08 05:17:59,619 p=20612 u=root |  TASK [Download Kops binaries] ***********************************************************
+2019-10-08 05:18:16,818 p=20612 u=root |  ok: [kops]
+2019-10-08 05:18:16,826 p=20612 u=root |  TASK [install kubectl] ******************************************************************
+2019-10-08 05:18:19,285 p=20612 u=root |  fatal: [kops]: FAILED! => {"changed": false, "msg": "No package matching 'kubectl' is available"}
+2019-10-08 05:18:19,288 p=20612 u=root |  PLAY RECAP ******************************************************************************
+2019-10-08 05:18:19,288 p=20612 u=root |  kops                       : ok=4    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2019-10-08 05:25:21,926 p=20693 u=root |  PLAY [kops] *****************************************************************************
+2019-10-08 05:25:21,934 p=20693 u=root |  TASK [install remote apt deps] **********************************************************
+2019-10-08 05:25:21,952 p=20693 u=root |  [DEPRECATION WARNING]: Invoking "apt" only once while using a loop via squash_actions is
+ deprecated. Instead of using a loop to supply multiple items and specifying `name: "{{ 
+item }}"`, please use `name: ['apt-transport-https', 'ca-certificates', 'gnupg2', 
+'software-properties-common']` and remove the loop. This feature will be removed in 
+version 2.11. Deprecation warnings can be disabled by setting deprecation_warnings=False
+ in ansible.cfg.
+2019-10-08 05:25:23,808 p=20693 u=root |  ok: [kops] => (item=[u'apt-transport-https', u'ca-certificates', u'gnupg2', u'software-properties-common'])
+2019-10-08 05:25:23,811 p=20693 u=root |   [WARNING]: Could not find aptitude. Using apt-get instead
+
+2019-10-08 05:25:23,817 p=20693 u=root |  TASK [Get Latest Version of kops] *******************************************************
+2019-10-08 05:25:24,755 p=20693 u=root |   [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you
+need to use command because get_url or uri is insufficient you can add 'warn: false' to
+this command task or set 'command_warnings=False' in ansible.cfg to get rid of this
+message.
+
+2019-10-08 05:25:24,755 p=20693 u=root |  changed: [kops]
+2019-10-08 05:25:24,762 p=20693 u=root |  TASK [set join command] *****************************************************************
+2019-10-08 05:25:24,783 p=20693 u=root |  ok: [kops]
+2019-10-08 05:25:24,789 p=20693 u=root |  TASK [Download Kops binaries] ***********************************************************
+2019-10-08 05:25:41,179 p=20693 u=root |  ok: [kops]
+2019-10-08 05:25:41,187 p=20693 u=root |  TASK [Get Latest Version of kubectl] ****************************************************
+2019-10-08 05:25:42,075 p=20693 u=root |  changed: [kops]
+2019-10-08 05:25:42,082 p=20693 u=root |  TASK [set join command] *****************************************************************
+2019-10-08 05:25:42,102 p=20693 u=root |  ok: [kops]
+2019-10-08 05:25:42,108 p=20693 u=root |  TASK [install kubectl] ******************************************************************
+2019-10-08 05:25:44,363 p=20693 u=root |  changed: [kops]
+2019-10-08 05:25:44,367 p=20693 u=root |  PLAY RECAP ******************************************************************************
+2019-10-08 05:25:44,367 p=20693 u=root |  kops                       : ok=7    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2019-10-08 05:28:14,811 p=20794 u=root |  ERROR! 'warn' is not a valid attribute for a Task
+
+The error appears to be in '/root/kops/roles/install-kops/tasks/main.yml': line 16, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: Get Latest Version of kops
+     ^ here
+
+This error can be suppressed as a warning using the "invalid_task_attribute_failed" configuration
