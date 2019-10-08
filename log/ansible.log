@@ -147,3 +147,20 @@ The offending line appears to be:
      ^ here
 
 This error can be suppressed as a warning using the "invalid_task_attribute_failed" configuration
+2019-10-08 05:29:43,259 p=20820 u=root |  PLAY [kops] *****************************************************************************
+2019-10-08 05:29:43,268 p=20820 u=root |  TASK [Changing Hostname to kops] ********************************************************
+2019-10-08 05:29:44,316 p=20820 u=root |  changed: [kops]
+2019-10-08 05:29:44,323 p=20820 u=root |  TASK [Reboot immediately if there was a change in reboot_req.] **************************
+2019-10-08 05:29:44,965 p=20820 u=root |  changed: [kops]
+2019-10-08 05:29:44,972 p=20820 u=root |  TASK [Wait for the reboot to complete if there was a change in reboot_req.] *************
+2019-10-08 05:30:35,683 p=20820 u=root |  ok: [kops]
+2019-10-08 05:30:35,690 p=20820 u=root |  TASK [Check if machine is On] ***********************************************************
+2019-10-08 05:30:35,977 p=20820 u=root |  changed: [kops]
+2019-10-08 05:30:35,984 p=20820 u=root |  TASK [op join command] ******************************************************************
+2019-10-08 05:30:36,006 p=20820 u=root |  ok: [kops]
+2019-10-08 05:30:36,013 p=20820 u=root |  TASK [Print Hostname of host machine] ***************************************************
+2019-10-08 05:30:36,034 p=20820 u=root |  ok: [kops] => {
+    "msg": "kops"
+}
+2019-10-08 05:30:36,038 p=20820 u=root |  PLAY RECAP ******************************************************************************
+2019-10-08 05:30:36,038 p=20820 u=root |  kops                       : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
