@@ -11,7 +11,7 @@ echo worker$n
 
   fi
 
-  ansible-playbook -i hosts --extra-vars "n=worker$n" update_workers.yml
+#  ansible-playbook -i hosts --extra-vars "n=worker$n" update_workers.yml
 
   n=$(( $n+1 ))
 done

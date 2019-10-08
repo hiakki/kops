@@ -2,7 +2,12 @@
   become: yes
   tasks:
     - name: create the 'kube' user
-      user: name=kube append=yes state=present createhome=yes shell=/bin/bash
+      user: 
+	name: kube 
+	append: yes 
+	state: present 
+	createhome: yes 
+	shell: /bin/bash
 
     - name: allow 'kube' to have passwordless sudo
       lineinfile:
