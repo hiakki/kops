@@ -1,0 +1,14 @@
+- hosts: kops
+  tasks:
+
+    - name: Check if machine is On
+      shell: echo I am On
+      register: op1
+
+    - name: set join command
+      set_fact:
+        op: "{{ op1.stdout_lines[0] }}"
+
+    - name: checking
+      debug:
+        msg: "{{ op }}"
