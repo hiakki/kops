@@ -1,0 +1,7 @@
+[masters]
+ kubeadm ansible_host=192.168.1.8
+ kops ansible_host=192.168.1.186
+
+[workers]
+ worker1 ansible_host=192.168.1.216
+ worker2 ansible_host=192.168.1.160
